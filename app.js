@@ -307,7 +307,7 @@ function addProduct() {
   const name = els.productName.value.trim();
   const price = Number(els.productPrice.value);
   const deposit = Number(els.productDeposit.value || 0);
-  const icon = els.productIcon.value.trim() || suggestedIcon(name);
+  const icon = (els.productIcon?.value || "").trim() || suggestedIcon(name);
 
   if (!name) {
     alert("Bitte einen Produktnamen eingeben.");
@@ -334,7 +334,7 @@ function addProduct() {
   currentPage = Math.floor((products.length - 1) / PAGE_SIZE);
 
   els.productName.value = "";
-  els.productIcon.value = "";
+  if (els.productIcon) els.productIcon.value = "";
   els.productPrice.value = "";
   els.productDeposit.value = "";
 
@@ -429,7 +429,7 @@ els.settingsBtn.addEventListener("click", () => {
 });
 
 els.productName.addEventListener("input", () => {
-  if (!els.productIcon.value.trim()) {
+  if (els.productIcon && !els.productIcon.value.trim()) {
     els.productIcon.placeholder = `z. B. ${suggestedIcon(els.productName.value)}`;
   }
 });
