@@ -1,4 +1,4 @@
-const CACHE = "event-kasse-v1";
+const CACHE = "event-kasse-v2";
 const FILES = [
   "./",
   "./index.html",
